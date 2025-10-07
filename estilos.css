@@ -1,0 +1,234 @@
+/* Laterales azules para la sección del mapa */
+.map-side-bar {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    background: ;
+    border-radius: 30px;
+}
+.direccion-mapa {
+    font-size: 1.1rem;
+}
+.map-banner-wrap {
+    min-height: 270px;
+}
+.map-banner-bg {
+    height: 120px;
+    background: #ADD8E6;
+    border-radius: 40px;
+    z-index: 1;
+    opacity: 0.18;
+}
+.savings-desc {
+    margin-bottom: 1.2rem;
+}
+.savings-desc-text {
+    font-size: 1.05rem;
+    color: #e6f0fa;
+    line-height: 1.4;
+    display: block;
+    text-align: left;
+    font-weight: 400;
+}
+.savings-title {
+    font-size: 1.18rem !important;
+    margin-bottom: 0.5rem !important;
+    font-weight: 700;
+    text-align: left;
+}
+.savings-label-big {
+    font-size: 1.05rem !important;
+    margin-bottom: 0.15rem !important;
+    text-align: left;
+}
+.savings-value {
+    font-size: 1.35rem !important;
+    margin-bottom: 0.3rem !important;
+    color: #e6f0fa !important;
+    text-align: left;
+}
+.savings-footnote {
+    font-size: 0.95rem !important;
+    color: #e6f0fa;
+    text-align: left;
+    margin-top: 0.7rem;
+}
+.savings-title {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.3rem !important;
+    font-weight: 700;
+}
+.savings-label-big {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.2rem !important;
+}
+.savings-value {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.3rem !important;
+    color: #e6f0fa !important;
+}
+/* Sección de ahorros compacta y balanceada */
+.bg-primary.py-5 {
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+}
+.savings-logo-side {
+    max-width: 420px;
+    min-width: 200px;
+    width: 100%;
+    max-height: 240px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
+}
+.savings-title {
+    font-size: 0.7rem !important;
+    margin-bottom: 0.1rem !important;
+    font-weight: 700;
+}
+.savings-label-big {
+    font-size: 0.65rem !important;
+    margin-bottom: 0.05rem !important;
+}
+.savings-value {
+    font-size: 0.8rem !important;
+    margin-bottom: 0.1rem !important;
+}
+.savings-value-main {
+    font-size: 1.1rem !important;
+    color: #e6f0fa !important;
+}
+/* Imagen de certificado a la izquierda, ancha pero no alta */
+.savings-logo-side {
+    max-width: 220px;
+    width: 90%;
+    height: auto;
+    max-height: 120px;
+    object-fit: contain;
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
+}
+/* Sección de ahorros mejorada */
+.savings-title {
+    font-size: 1.2rem;
+}
+.savings-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 140px;
+    height: auto;
+}
+.savings-label-big {
+    font-size: 1rem;
+}
+.savings-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.savings-footnote {
+    font-size: 1.5rem;
+    color: #e6f0fa;
+}
+/* Imagen Ventajas y Certificaciones centrada y grande */
+.vyc {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90vw;
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+}
+/* Logo UPDM más separado de la izquierda */
+.logo-updm {
+    margin-left: 18px;
+}
+/* Marca Protecall */
+.protecall-brand {
+    font-size: 1.5rem;
+}
+
+/* Hero principal */
+.hero-section {
+    background: #222;
+    min-height: 350px;
+}
+.hero-bg-img {
+    object-fit: cover;
+    opacity: 0.4;
+    min-height: 350px;
+}
+.hero-content {
+    min-height: 350px;
+}
+.hero-center {
+    min-height: 350px;
+}
+.hero-title {
+    letter-spacing: 2px;
+}
+.hero-hr {
+    width: 120px;
+    height: 4px;
+    border: none;
+    margin: 1rem auto;
+}
+.hero-lead {
+    max-width: 600px;
+}
+
+/* Sección de ahorros */
+.savings-label {
+    font-size: 0.9rem;
+}
+/* estilos.css - Personalización mínima, usa Bootstrap como base */
+
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.navbar {
+    margin-bottom: 0rem;
+}
+
+/* Anulando el color primario de Bootstrap para la sección de ahorros */
+.bg-primary {
+    background-color: #4ab7e2 !important; /* ¡Cambia este color por el que prefieras! */
+}
+
+/* Anulando el color del botón primario */
+.btn-primary {
+    background-color: #4ab7e2 !important;
+    border-color: #4ab7e2 !important;
+}
+
+/* Opcional: Cambiar el color cuando el ratón está encima */
+.btn-primary:hover {
+    background-color: #3096be !important; /* Un tono un poco más oscuro */
+    border-color: #349ec8 !important;
+}
+
+/* En tu archivo estilos.css */
+
+.bg-celeste {
+  background-color: #4ab7e2; /* Este es el código para SkyBlue */
+}
+
+/* Personalizando el color de los enlaces de la barra de navegación */
+.navbar .nav-link {
+    color:  #4ab7e2 !important; /* Cambia este color por el que prefieras */
+}

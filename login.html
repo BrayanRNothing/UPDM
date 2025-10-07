@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="inicio.html">Tienda</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="inicio.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="perfil.html">Perfil</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div data-zone="form" class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card p-4 shadow" style="max-width: 350px; width: 100%;">
+            <h3 class="mb-3 text-center">Iniciar Sesión</h3>
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="usuario" required>
+                </div>
+                <div class="mb-3">
+                    <label for="contrasena" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="contrasena" required>
+                </div>
+                <div id="loginError" class="text-danger mb-2" style="display:none;"></div>
+                <button type="submit" class="btn btn-primary w-100">Entrar</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</body>
+<script>
+// Lista de usuarios permitidos (puedes agregar más)
+const usuarios = [
+    { usuario: "brayan", contrasena: "1234" },
+    { usuario: "julio", contrasena: "1234" }            
+];
+
+// Referencia al formulario de login y al div de error
+const form = document.getElementById('loginForm');
+const errorDiv = document.getElementById('loginError');
+
+// Evento que se ejecuta cuando se envía el formulario
+form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Evita que la página se recargue
+    // Obtiene los valores ingresados por el usuario
+    const user = document.getElementById('usuario').value;
+    const pass = document.getElementById('contrasena').value;
+    // Busca si existe un usuario con ese usuario y contraseña
+    const encontrado = usuarios.find(u => u.usuario === user && u.contrasena === pass);
+    if (encontrado) {
+        // Si se encuentra, oculta el mensaje de error (si estaba visible)
+        errorDiv.style.display = 'none';
+        // Redirige a la página de inicio
+        window.location.href = 'inicio.html';
+    } else {
+        // Si no se encuentra, muestra mensaje de error
+        errorDiv.textContent = 'Usuario o contraseña incorrectos';
+        errorDiv.style.display = 'block';
+    }
+});
+</script>
+</html>
