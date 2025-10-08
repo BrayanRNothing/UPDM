@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <!-- Barra de navegación estilo Protecall -->
+    <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="LOGOUPDM.png" alt="Protecall Logo" width="110" height="50" class="me-2 logo-updm">
+                <img src="https://drive.google.com/file/d/1w9T9f7cyyXRV3wIoXK_-KT2ZpEd-oYKF" alt="Protecall Logo" width="110" height="50" class="me-2 logo-updm">
                 <span class="fw-bold text-success protecall-brand"></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,10 +20,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Protege</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="inicio.html">Inicio</a></li>
+                     <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="protege.html">Protege</a></li>
                     <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Restaura</a></li>
                     <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Optimiza</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Other Services</a></li>
                     <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Contact</a></li>
                     <li class="nav-item ms-2">
                         <a class="btn btn-primary fw-bold px-4" href="#">Cotizaciones</a>
@@ -33,21 +33,68 @@
         </div>
     </nav>
 
-
+     <!-- https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80 --> 
     <!-- Hero/Slider principal -->
-    <div class="position-relative hero-section">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80" alt="HVAC" class="w-100 h-100 position-absolute top-0 start-0 hero-bg-img">
-        <div class="container position-relative z-2 py-5 hero-content">
-            <div class="d-flex flex-column justify-content-center align-items-center h-100 hero-center">
-                <h1 class="display-2 fw-bold text-white text-center hero-title">PROTEGE</h1>
-                <hr class="bg-white opacity-100 hero-hr">
-                <p class="lead text-white text-center hero-lead">Reducing the impact of the environment on HVAC operation resulting in energy savings</p>
-                <div class="mt-3">
-                    <span class="text-white-50">● ● ● ●</span>
+ <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <div class="carousel-inner">
+        
+        <div class="carousel-item active">
+            <div class="position-relative hero-section">
+                <img src="inicio1.jpeg" alt="HVAC" class="w-100 h-100 position-absolute top-0 start-0 hero-bg-img">
+                <div class="container position-relative z-2 py-5 hero-content">
+                    <div class="d-flex flex-column justify-content-center align-items-center h-100 hero-center">
+                        <h1 class="display-2 fw-bold text-white text-center hero-title">PROTEGE</h1>
+                        <hr class="bg-white opacity-100 hero-hr">
+                        <p class="lead text-white text-center hero-lead">Reduce el impacto corrosivo del ambiente y evita problemas costosos a futuro.</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="carousel-item">
+            <div class="position-relative hero-section">
+                <img src="foto2.png" alt="Paisaje Industrial" class="w-100 h-100 position-absolute top-0 start-0 hero-bg-img">
+                <div class="container position-relative z-2 py-5 hero-content">
+                    <div class="d-flex flex-column justify-content-center align-items-center h-100 hero-center">
+                        <h1 class="display-2 fw-bold text-white text-center hero-title">RESTAURA</h1>
+                        <hr class="bg-white opacity-100 hero-hr">
+                        <p class="lead text-white text-center hero-lead">Devuelve la integridad y eficiencia a tus equipos con nuestros recubrimientos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="position-relative hero-section">
+                <img src="foto3.png" alt="Infraestructura Moderna" class="w-100 h-100 position-absolute top-0 start-0 hero-bg-img">
+                <div class="container position-relative z-2 py-5 hero-content">
+                    <div class="d-flex flex-column justify-content-center align-items-center h-100 hero-center">
+                        <h1 class="display-2 fw-bold text-white text-center hero-title">OPTIMIZA</h1>
+                        <hr class="bg-white opacity-100 hero-hr">
+                        <p class="lead text-white text-center hero-lead">Mejora el rendimiento y la vida útil de tus activos industriales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
 
     <!-- Sección de ahorros -->
     <div class="bg-celeste text-white py-3 ">
@@ -163,7 +210,7 @@
             </div>
             <div class="col-md-6 mb-4">
                 <div class="ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" title="Video 2" allowfullscreen></iframe>
+                    <iframe src="https://drive.google.com/file/d/1kOZs8ePZde8MePJjL8cYSZ2J-wQaeBMI/preview" title="Video 2" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
