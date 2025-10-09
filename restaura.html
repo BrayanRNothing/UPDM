@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPDM - Ingeniería de Superficies Contra la Corrosión</title>
+    
+    <!-- (Sin Google Fonts aquí para que la navbar use la misma fuente/peso que las otras páginas) -->
+
+    <!-- Bootstrap (librería) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <!-- Iconos (después de Bootstrap está bien) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Tus estilos personalizados deben cargarse al final para poder sobrescribir Bootstrap -->
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        /* ==========================================================================
+           CONFIGURACIÓN GENERAL Y ESTILOS BASE
+           (Combinando tus preferencias con el nuevo diseño)
+           ========================================================================== */
+        /* Usar las fuentes/valores globales definidos en estilos.css para mantener consistencia */
+        body {
+            background-color: #f8f9fa; /* Tu color de fondo original */
+        }
+
+        /* Usando tu color principal preferido para todo el sitio */
+        .text-primary {
+            color: #4ab7e2 !important;
+        }
+
+        .bg-primary,
+        .btn-primary,
+        .bg-celeste {
+            background-color: #4ab7e2 !important;
+            border-color: #4ab7e2 !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #3096be !important; /* Tu color hover original */
+            border-color: #349ec8 !important;
+        }
+
+        .card {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Tu sombra de tarjeta original */
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.03); /* Tu efecto hover de tarjeta */
+        }
+
+        /* ==========================================================================
+           Barra de Navegación (Tus Estilos Específicos)
+           ========================================================================== */
+        
+
+        /* ==========================================================================
+           NUEVO: HERO CON VIDEO
+           ========================================================================== */
+        .hero-section {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-video {
+            position: absolute;
+            top: 50%; left: 50%;
+            min-width: 100%; min-height: 100%;
+            width: auto; height: auto;
+            z-index: -100;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(10, 20, 30, 0.7);
+        }
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ==========================================================================
+           NUEVO: TARJETAS DE SERVICIO
+           ========================================================================== */
+        .service-card {
+            border: 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        .service-icon {
+            width: 80px; height: 80px;
+            margin: -40px auto 0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            border: 4px solid white;
+        }
+
+        /* ==========================================================================
+           NUEVO: PROCESO
+           ========================================================================== */
+        .process-icon {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid #4ab7e2;
+            color: #4ab7e2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .process-step:hover .process-icon {
+            background-color: #4ab7e2;
+            color: #fff;
+        }
+
+        /* ==========================================================================
+           NUEVO: SECCIÓN DE RESTAURACIÓN
+           ========================================================================== */
+        .restauracion-bg {
+            background-color: #1a202c;
+            background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+        }
+        .antes-despues-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .antes-despues-card .label-antes, .antes-despues-card .label-despues {
+            position: absolute; top: 20px; left: 20px;
+            padding: 8px 16px; font-size: 1rem; font-weight: bold;
+            color: #fff; border-radius: 5px; text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .antes-despues-card .label-antes {
+            background-color: rgba(220, 53, 69, 0.8);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .antes-despues-card .label-despues {
+            background-color: rgba(25, 135, 84, 0.8);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .caso-exito-bg {
+            border: 1px solid #dee2e6;
+            box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.1);
+        }
+        .proceso-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.375rem;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .proceso-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.2);
+        }
+        .proceso-card .proceso-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
+            color: #fff;
+            padding: 40px 20px 20px 20px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease-out;
+        }
+        .proceso-card:hover .proceso-overlay {
+            transform: translateY(0);
+        }
+        .proceso-card .proceso-titulo { font-weight: bold; margin-bottom: 5px; }
+        .proceso-card .proceso-desc { font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-bottom: 0; }
+
+        /* ==========================================================================
+           NUEVO: SECTORES
+           ========================================================================== */
+        .sector-card {
+            background-color: #fff; padding: 20px;
+            border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .sector-card:hover {
+            background-color: #4ab7e2; color: #fff;
+            transform: translateY(-5px);
+        }
+        .sector-card i { font-size: 2.5rem; margin-bottom: 10px; }
+
+        /* ==========================================================================
+           NUEVO: ANIMACIÓN DE FADE-IN AL HACER SCROLL
+           ========================================================================== */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================================================
+           TUS ESTILOS PERSONALIZADOS PARA OTRAS SECCIONES
+           (Limpiado y consolidado de tu archivo original)
+           ========================================================================== */
+        .savings-title { font-size: 1.2rem; }
+        .savings-logo { display: block; margin-left: auto; margin-right: auto; max-width: 140px; height: auto; }
+        .savings-label-big { font-size: 1rem; }
+        .savings-value { font-size: 1.5rem; font-weight: bold; }
+        .savings-footnote { font-size: 1.5rem; color: #e6f0fa; }
+        .savings-desc-text { font-size: 1.05rem; color: #e6f0fa; line-height: 1.4; display: block; text-align: left; font-weight: 400; }
+        .vyc {
+            display: block; margin-left: auto; margin-right: auto;
+            max-width: 90vw; width: 100%; height: auto; max-height: 80vh;
+            object-fit: contain;
+        }
+        .map-side-bar { width: 100%; height: 100%; min-height: 300px; background: #4ab7e2; border-radius: 30px; }
+        .direccion-mapa { font-size: 1.1rem; }
+        .map-banner-wrap { min-height: 270px; }
+        .map-banner-bg { height: 120px; background: #ADD8E6; border-radius: 40px; z-index: 1; opacity: 0.18; }
+
+        /* Asegurar peso consistente en los enlaces de la navbar (soluciona diferencia visual entre páginas) */
+        .navbar .nav-link {
+            font-weight: 600;
+        }
+    </style>
+    </head>
+<body>
+    
+      <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="LOGOUPDM.png" alt="Protecall Logo" width="110" height="50" class="me-2 logo-updm">
+                <span class="fw-bold text-success protecall-brand"></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="protege.html">Protege</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="restaura.html">Restaura</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Optimiza</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Contact</a></li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary fw-bold px-4" href="#">Cotizaciones</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Fin Barra de navegación -->
+    <header class="hero-section">
+        <video playsinline autoplay muted loop class="hero-video">
+            <img src="seccion.png"/>
+        </video>
+        <div class="container h-100">
+            <div class="d-flex h-100 text-center align-items-center">
+                <div class="w-100 text-white">
+                    <h1 class="display-3 fw-bold">Ingeniería de Superficies Contra la Corrosión</h1>
+                    <p class="lead my-3 col-lg-8 mx-auto">Protegemos, restauramos y optimizamos los activos más críticos de la industria, garantizando su máxima longevidad y rendimiento.</p>
+                    <a class="btn btn-primary btn-lg fw-bold px-4 mt-3" href="#contacto">Solicitar Diagnóstico</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 mb-4 mb-md-0 fade-in-section">
+                    <i class="bi bi-shield-slashed fs-1 text-primary mb-2"></i>
+                    <h3 class="fw-bold">137M LBS+</h3>
+                    <p class="text-white-50">de Emisiones de Carbono Evitadas</p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0 fade-in-section">
+                    <i class="bi bi-lightning-charge-fill fs-1 text-primary mb-2"></i>
+                    <h3 class="fw-bold">$10M+ USD</h3>
+                    <p class="text-white-50">Ahorrados en Energía por Nuestros Clientes</p>
+                </div>
+                <div class="col-md-4 fade-in-section">
+                    <i class="bi bi-tools fs-1 text-primary mb-2"></i>
+                    <h3 class="fw-bold">99.8%</h3>
+                    <p class="text-white-50">de Eficiencia en Continuidad Operativa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5 fade-in-section">
+                <h2 class="fw-bold">Nuestros Pilares de Servicio</h2>
+                <p class="lead text-muted">Un enfoque integral para el ciclo de vida de tus activos.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 fade-in-section">
+                    <div class="card service-card h-100"><div class="card-body text-center"><div class="service-icon bg-primary text-white"><i class="bi bi-shield-check"></i></div><h4 class="fw-bold mt-4">Protege</h4><p class="text-muted">Aplicamos recubrimientos de ingeniería avanzada para blindar equipos nuevos contra ambientes hostiles, previniendo la corrosión desde el día uno.</p></div></div>
+                </div>
+                <div class="col-lg-4 fade-in-section">
+                    <div class="card service-card h-100"><div class="card-body text-center"><div class="service-icon bg-primary text-white"><i class="bi bi-arrow-repeat"></i></div><h4 class="fw-bold mt-4">Restaura</h4><p class="text-muted">Recuperamos equipos deteriorados a su máxima eficiencia a través de un meticuloso proceso de reingeniería de superficies, superando su rendimiento original.</p></div></div>
+                </div>
+                <div class="col-lg-4 fade-in-section">
+                    <div class="card service-card h-100"><div class="card-body text-center"><div class="service-icon bg-primary text-white"><i class="bi bi-graph-up-arrow"></i></div><h4 class="fw-bold mt-4">Optimiza</h4><p class="text-muted">Mejoramos la eficiencia energética y la resistencia al desgaste de componentes clave, reduciendo costos operativos y aumentando la productividad.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5 fade-in-section">
+                <h2 class="fw-bold">Nuestro Proceso de 4 Etapas</h2>
+                <p class="lead text-muted">Metodología, precisión y tecnología en cada paso.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3 text-center fade-in-section"><div class="process-step"><div class="process-icon">1</div><h5 class="fw-bold mt-3">Diagnóstico</h5><p class="text-muted">Análisis con ultrasonido y termografía para identificar el nivel de degradación y planificar la solución exacta.</p></div></div>
+                <div class="col-md-3 text-center fade-in-section"><div class="process-step"><div class="process-icon">2</div><h5 class="fw-bold mt-3">Preparación</h5><p class="text-muted">Preparación de superficie según estándares SSPC/NACE para garantizar una adherencia molecular perfecta.</p></div></div>
+                <div class="col-md-3 text-center fade-in-section"><div class="process-step"><div class="process-icon">3</div><h5 class="fw-bold mt-3">Aplicación</h5><p class="text-muted">Uso de tecnología de aspersión de alta precisión para aplicar sistemas de recubrimiento multicapa.</p></div></div>
+                <div class="col-md-3 text-center fade-in-section"><div class="process-step"><div class="process-icon">4</div><h5 class="fw-bold mt-3">Verificación</h5><p class="text-muted">Control de calidad final, incluyendo pruebas de adherencia y medición de espesores, documentado en un dossier técnico.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="restauracion-bg py-5">
+        <div class="container">
+            <div class="text-center text-white mb-5"><h1 class="display-4 fw-bold">Restauración y Reingeniería de Equipos</h1><p class="lead col-lg-8 mx-auto">Más allá de la reparación: devolvemos la eficiencia y extendemos la vida útil de equipos críticos a través de recubrimientos de ingeniería avanzada.</p></div>
+            <div class="row g-4 align-items-center mb-5 pb-5">
+                <div class="col-md-6"><div class="antes-despues-card"><img src="restauracion1.jpg" class="img-fluid rounded shadow-lg" alt="Equipo industrial corroído"><div class="label-antes">ANTES</div><div class="card-body text-center mt-3"><h5 class="card-title fw-bold text-white">Estado Crítico: Corrosión Severa</h5><p class="card-text text-white-50">La exposición a la intemperie había comprometido la integridad estructural y la eficiencia del equipo.</p></div></div></div>
+                <div class="col-md-6"><div class="antes-despues-card"><img src="restauracion2.jpg" class="img-fluid rounded shadow-lg" alt="Equipo industrial restaurado"><div class="label-despues">DESPUÉS</div><div class="card-body text-center mt-3"><h5 class="card-title fw-bold text-white">Restauración Completa</h5><p class="card-text text-white-50">Aplicación de nuestro sistema anticorrosivo. El equipo no solo luce nuevo, está protegido para operar por años.</p></div></div></div>
+            </div>
+            <div class="caso-exito-bg bg-light p-5 rounded-3">
+                <div class="text-center mb-5"><h2 class="fw-bold">Caso de Éxito: Unidades HVAC Carrier</h2><p class="lead text-muted col-lg-9 mx-auto">Un vistazo a nuestro meticuloso proceso de restauración, garantizando que cada componente cumpla con los más altos estándares.</p></div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3"><div class="proceso-card"><img src="restauracionp1.jpg" class="img-fluid rounded" alt="Preparación de superficie"><div class="proceso-overlay"><h6 class="proceso-titulo">Paso 1: Preparación</h6><p class="proceso-desc">Limpieza y preparación de superficie con sandblasting para asegurar una adherencia perfecta.</p></div></div></div>
+                    <div class="col-md-6 col-lg-3"><div class="proceso-card"><img src="restauracionp2.jpg" class="img-fluid rounded" alt="Aplicación de primer"><div class="proceso-overlay"><h6 class="proceso-titulo">Paso 2: Imprimación</h6><p class="proceso-desc">Aplicación de imprimación rica en zinc para una protección galvánica contra la corrosión.</p></div></div></div>
+                    <div class="col-md-6 col-lg-3"><div class="proceso-card"><img src="restauracionp3.jpg" class="img-fluid rounded" alt="Capa intermedia"><div class="proceso-overlay"><h6 class="proceso-titulo">Paso 3: Capa Intermedia</h6><p class="proceso-desc">Barrera epóxica de alto espesor para crear una impermeabilidad total y resistencia química.</p></div></div></div>
+                    <div class="col-md-6 col-lg-3"><div class="proceso-card"><img src="restauracionp4.jpg" class="img-fluid rounded" alt="Acabado final"><div class="proceso-overlay"><h6 class="proceso-titulo">Paso 4: Acabado Final</h6><p class="proceso-desc">Capa de acabado con poliuretano de alta resistencia a los rayos UV, garantizando un color y brillo duraderos.</p></div></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 fade-in-section"><img src="ventajasycert.png" class="img-fluid rounded shadow" alt="Certificaciones y Ventajas UPDM"></div>
+                <div class="col-lg-6 fade-in-section">
+                    <h2 class="fw-bold">Tecnología y Confianza que Protegen tu Inversión</h2>
+                    <p class="text-muted">No solo aplicamos recubrimientos, implementamos soluciones de ingeniería a la medida.</p>
+                    <div class="d-flex mb-3"><i class="bi bi-patch-check-fill text-primary fs-4 me-3"></i><div><h5 class="fw-bold">Certificación ISO 9001</h5><p class="text-muted">Nuestros procesos están certificados, garantizando una calidad y trazabilidad consistentes en cada proyecto.</p></div></div>
+                    <div class="d-flex mb-3"><i class="bi bi-cpu-fill text-primary fs-4 me-3"></i><div><h5 class="fw-bold">Tecnología de Punta</h5><p class="text-muted">Invertimos en los equipos de diagnóstico y aplicación más avanzados del mercado para ofrecer resultados superiores.</p></div></div>
+                    <div class="d-flex"><i class="bi bi-people-fill text-primary fs-4 me-3"></i><div><h5 class="fw-bold">Soluciones a la Medida</h5><p class="text-muted">Analizamos tu entorno operativo para diseñar un sistema de protección único que responda a tus desafíos específicos.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5 fade-in-section"><h2 class="fw-bold">Atendemos a los Sectores más Exigentes</h2></div>
+            <div class="row g-4 text-center">
+                <div class="col-6 col-md-4 col-lg-2 fade-in-section"><div class="sector-card"><i class="bi bi-water"></i><p>Marítimo</p></div></div>
+                <div class="col-6 col-md-4 col-lg-2 fade-in-section"><div class="sector-card"><i class="bi bi-fuel-pump-fill"></i><p>Petróleo y Gas</p></div></div>
+                <div class="col-6 col-md-4 col-lg-2 fade-in-section"><div class="sector-card"><i class="bi bi-lightning-fill"></i><p>Energía</p></div></div>
+                <div class="col-6 col-md-4 col-lg-2 fade-in-section"><div class="sector-card"><i class="bi bi-minecart-loaded"></i><p>Minería</p></div></div>
+                <div class="col-6 col-md-4 col-lg-2 fade-in-section"><div class="sector-card"><i class="bi bi-buildings-fill"></i><p>Infraestructura</p></div></div>
+                <div class="col-6 col-md-4 col-lg-2 fade-in-section"><div class="sector-card"><i class="bi bi-gear-wide-connected"></i><p>Manufactura</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" id="contacto">
+        <div class="container">
+             <div class="text-center mb-5 fade-in-section"><h2 class="fw-bold">Hablemos de tu Proyecto</h2></div>
+            <div class="row g-0 align-items-stretch shadow-lg rounded-3 overflow-hidden">
+                <div class="col-lg-6 p-4 p-md-5 bg-primary text-white d-flex flex-column justify-content-center">
+                    <h4 class="fw-bold mb-3">Visítanos en Monterrey</h4>
+                    <p><strong>Dirección:</strong> Av. Cumbres Madeiras 1310, Real de Cumbres, Monterrey, N.L., México</p>
+                    <p><strong>Teléfono:</strong> (81) 1234-5678</p><p><strong>Email:</strong> contacto@UPDM.com.mx</p>
+                    <p><strong>Horario:</strong> Lunes a Viernes, 9:00 a 18:00</p>
+                </div>
+                <div class="col-lg-6 p-0">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593.63383921865!2d-100.4210636849793!3d25.74950798364273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x866299b8b0e70f6d%3A0x7c73a7c6f081c70e!2sAv.%20Cumbres%20Madeira%201310%2C%20Real%20de%20Cumbres%2C%2064346%20Monterrey%2C%20N.L.!5e0!3m2!1ses-419!2smx!4v1668541276211!5m2!1ses-419!2smx" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-1">© 2025 UPDM. Todos los derechos reservados.</p>
+            <small>Contacto: contacto@UPDM.com.mx | Tel: (81) 1234-5678</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let options = { root: null, rootMargin: "0px", threshold: 0.1 };
+            let observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+            let targets = document.querySelectorAll('.fade-in-section');
+            targets.forEach(target => { observer.observe(target); });
+        });
+    </script>
+</body>
+</html>
