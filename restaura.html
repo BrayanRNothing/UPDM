@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UPDM - Ingeniería de Superficies Contra la Corrosión</title>
+    <!-- Favicons (generados y guardados en /favicon) -->
+    <link rel="icon" href="favicon/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png">
+    <meta name="theme-color" content="#4ab7e2">
     
     <!-- (Sin Google Fonts aquí para que la navbar use la misma fuente/peso que las otras páginas) -->
 
@@ -61,27 +66,46 @@
            ========================================================================== */
         .hero-section {
             position: relative;
-            height: 80vh;
+            min-height: 350px; /* igual que en index.html */
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
         }
-        .hero-video {
+        /* Asegurar que la hero use la imagen y no el fondo por defecto de estilos.css */
+        .hero-section { background: transparent !important; }
+        .hero-bg {
             position: absolute;
-            top: 50%; left: 50%;
-            min-width: 100%; min-height: 100%;
-            width: auto; height: auto;
-            z-index: -100;
-            transform: translateX(-50%) translateY(-50%);
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 0; /* debe quedar por debajo del contenido, pero encima del fondo */
+            filter: none; /* mostrar la imagen sin alterar */
+            background-repeat: no-repeat;
+        }
+        /* Igual que en index: imagen de hero absoluta, cover — sin opacidad para no blanquearla */
+        .hero-bg-img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             object-fit: cover;
+            background-size: cover;
+            background-position: center;
+            opacity: 1; /* mostrar la imagen completa */
+        }
+        @media (max-width: 768px) {
+            .hero-section { height: auto; }
+            .hero-bg { height: 60vh; }
         }
         .hero-section::after {
             content: '';
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(10, 20, 30, 0.7);
+            /* capa oscura ligera para que el texto sea legible sin blanquear la imagen */
+            background: rgba(0, 0, 0, 0.503);
+            z-index: 1;
         }
         .hero-section .container {
             position: relative;
@@ -144,6 +168,21 @@
         .antes-despues-card {
             position: relative;
             overflow: hidden;
+        }
+        /* Forzar tamaño uniforme en imágenes de antes/después */
+        .antes-despues-card img {
+            width: 100%;
+            height: 420px; /* altura aumentada */
+            object-fit: cover;
+            display: block;
+            border-radius: .375rem;
+        }
+
+        /* Reducir altura en pantallas pequeñas para mantener buen encuadre */
+        @media (max-width: 768px) {
+            .antes-despues-card img {
+                height: 280px;
+            }
         }
         .antes-despues-card .label-antes, .antes-despues-card .label-despues {
             position: absolute; top: 20px; left: 20px;
@@ -258,8 +297,7 @@
                     <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="index.html">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="protege.html">Protege</a></li>
                     <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="restaura.html">Restaura</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Optimiza</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="optimiza.html">Optimiza</a></li>
                     <li class="nav-item ms-2">
                         <a class="btn btn-primary fw-bold px-4" href="#">Cotizaciones</a>
                     </li>
@@ -268,26 +306,27 @@
         </div>
     </nav>
     <!-- Fin Barra de navegación -->
+
+    <!-- Hero con imagen estática (alineado a index.html) -->
     <header class="hero-section">
-        <video playsinline autoplay muted loop class="hero-video">
-            <img src="seccion.png"/>
-        </video>
-        <div class="container h-100">
-            <div class="d-flex h-100 text-center align-items-center">
-                <div class="w-100 text-white">
-                    <h1 class="display-3 fw-bold">Ingeniería de Superficies Contra la Corrosión</h1>
-                    <p class="lead my-3 col-lg-8 mx-auto">Protegemos, restauramos y optimizamos los activos más críticos de la industria, garantizando su máxima longevidad y rendimiento.</p>
-                    <a class="btn btn-primary btn-lg fw-bold px-4 mt-3" href="#contacto">Solicitar Diagnóstico</a>
-                </div>
+        <img src="rest.png" alt="Restauración" class="w-100 h-100 position-absolute top-0 start-0 hero-bg-img">
+        <div class="container position-relative z-2 py-5 hero-content">
+            <div class="d-flex flex-column justify-content-center align-items-center h-100 hero-center text-center">
+                <h1 class="display-3 fw-bold text-white hero-title">Ingeniería de Superficies Contra la Corrosión</h1>
+                <hr class="bg-white opacity-100 hero-hr">
+                <p class="lead text-white text-center hero-lead">Protegemos, restauramos y optimizamos los activos más críticos de la industria, garantizando su máxima longevidad y rendimiento.</p>
+                <a class="btn btn-primary btn-lg fw-bold px-4 mt-3" href="#contacto">Solicitar Diagnóstico</a>
             </div>
         </div>
     </header>
+    <!-- Fin Hero con imagen estática -->
+
 
     <section class="bg-dark text-white py-5">
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-4 mb-4 mb-md-0 fade-in-section">
-                    <i class="bi bi-shield-slashed fs-1 text-primary mb-2"></i>
+                    <i class="bi bi-shield-check fs-1 text-primary mb-2"></i>
                     <h3 class="fw-bold">137M LBS+</h3>
                     <p class="text-white-50">de Emisiones de Carbono Evitadas</p>
                 </div>
@@ -327,6 +366,7 @@
     
     <section class="py-5 bg-light">
         <div class="container">
+
             <div class="text-center mb-5 fade-in-section">
                 <h2 class="fw-bold">Nuestro Proceso de 4 Etapas</h2>
                 <p class="lead text-muted">Metodología, precisión y tecnología en cada paso.</p>
@@ -340,12 +380,13 @@
         </div>
     </section>
 
+    <!-- Sección de Restauración -->
     <div class="restauracion-bg py-5">
         <div class="container">
             <div class="text-center text-white mb-5"><h1 class="display-4 fw-bold">Restauración y Reingeniería de Equipos</h1><p class="lead col-lg-8 mx-auto">Más allá de la reparación: devolvemos la eficiencia y extendemos la vida útil de equipos críticos a través de recubrimientos de ingeniería avanzada.</p></div>
             <div class="row g-4 align-items-center mb-5 pb-5">
-                <div class="col-md-6"><div class="antes-despues-card"><img src="restauracion1.jpg" class="img-fluid rounded shadow-lg" alt="Equipo industrial corroído"><div class="label-antes">ANTES</div><div class="card-body text-center mt-3"><h5 class="card-title fw-bold text-white">Estado Crítico: Corrosión Severa</h5><p class="card-text text-white-50">La exposición a la intemperie había comprometido la integridad estructural y la eficiencia del equipo.</p></div></div></div>
-                <div class="col-md-6"><div class="antes-despues-card"><img src="restauracion2.jpg" class="img-fluid rounded shadow-lg" alt="Equipo industrial restaurado"><div class="label-despues">DESPUÉS</div><div class="card-body text-center mt-3"><h5 class="card-title fw-bold text-white">Restauración Completa</h5><p class="card-text text-white-50">Aplicación de nuestro sistema anticorrosivo. El equipo no solo luce nuevo, está protegido para operar por años.</p></div></div></div>
+                <div class="col-md-6"><div class="antes-despues-card"><img src="restauracion1.jpg" class="img-fluid rounded shadow-lg" alt="Equipo industrial corroído"><div class="label-antes">Restaurado</div><div class="card-body text-center mt-3"><h5 class="card-title fw-bold text-white">Estado Crítico: Corrosión Severa</h5><p class="card-text text-white-50">La exposición a la intemperie había comprometido la integridad estructural y la eficiencia del equipo.</p></div></div></div>
+                <div class="col-md-6"><div class="antes-despues-card"><img src="restauracion2.jpg" class="img-fluid rounded shadow-lg" alt="Equipo industrial restaurado"><div class="label-despues">Restaurado</div><div class="card-body text-center mt-3"><h5 class="card-title fw-bold text-white">Restauración Completa</h5><p class="card-text text-white-50">Aplicación de nuestro sistema anticorrosivo. El equipo no solo luce nuevo, está protegido para operar por años.</p></div></div></div>
             </div>
             <div class="caso-exito-bg bg-light p-5 rounded-3">
                 <div class="text-center mb-5"><h2 class="fw-bold">Caso de Éxito: Unidades HVAC Carrier</h2><p class="lead text-muted col-lg-9 mx-auto">Un vistazo a nuestro meticuloso proceso de restauración, garantizando que cada componente cumpla con los más altos estándares.</p></div>
@@ -358,7 +399,9 @@
             </div>
         </div>
     </div>
-    
+    <!-- Fin Sección de Restauración -->
+
+     <!-- Sección de Ventajas y Certificaciones -->
     <section class="py-5">
         <div class="container">
             <div class="row align-items-center g-5">
@@ -373,6 +416,9 @@
             </div>
         </div>
     </section>
+    <!-- Fin Sección de Ventajas y Certificaciones -->
+
+    <!-- Sección de Sectores Exigentes -->
 
     <section class="py-5 bg-light">
         <div class="container">
@@ -388,22 +434,32 @@
         </div>
     </section>
 
+    <!-- Sección de Contacto -->
     <section class="py-5" id="contacto">
         <div class="container">
-             <div class="text-center mb-5 fade-in-section"><h2 class="fw-bold">Hablemos de tu Proyecto</h2></div>
-            <div class="row g-0 align-items-stretch shadow-lg rounded-3 overflow-hidden">
-                <div class="col-lg-6 p-4 p-md-5 bg-primary text-white d-flex flex-column justify-content-center">
-                    <h4 class="fw-bold mb-3">Visítanos en Monterrey</h4>
-                    <p><strong>Dirección:</strong> Av. Cumbres Madeiras 1310, Real de Cumbres, Monterrey, N.L., México</p>
-                    <p><strong>Teléfono:</strong> (81) 1234-5678</p><p><strong>Email:</strong> contacto@UPDM.com.mx</p>
-                    <p><strong>Horario:</strong> Lunes a Viernes, 9:00 a 18:00</p>
-                </div>
-                <div class="col-lg-6 p-0">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593.63383921865!2d-100.4210636849793!3d25.74950798364273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x866299b8b0e70f6d%3A0x7c73a7c6f081c70e!2sAv.%20Cumbres%20Madeira%201310%2C%20Real%20de%20Cumbres%2C%2064346%20Monterrey%2C%20N.L.!5e0!3m2!1ses-419!2smx!4v1668541276211!5m2!1ses-419!2smx" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="text-center mb-5 fade-in-section"><h2 class="fw-bold">Hablemos de tu Proyecto</h2></div>
+            <div class="container my-5">
+                <div class="row align-items-stretch shadow rounded-4 overflow-hidden mapa-bloque">
+                    <div class="col-md-6 p-4 d-flex flex-column justify-content-center bg-celeste text-white mapa-texto">
+                        <h4 class="fw-bold mb-3">Visítanos en Monterrey</h4>
+                        <ul class="list-unstyled mb-3">
+                            <li><strong>Dirección:</strong> Av. Cumbres Madeiras 1310, Real de Cumbres, Monterrey, N.L., México</li>
+                            <li><strong>Teléfono:</strong> (81) 1234-5678</li>
+                            <li><strong>Email:</strong> contacto@UPDM.com.mx</li>
+                            <li><strong>Horario:</strong> Lunes a Viernes, 9:00 a 18:00</li>
+                        </ul>
+                        <p class="mb-0">¡Estamos listos para ayudarte con soluciones anticorrosivas y recubrimientos certificados!</p>
+                    </div>
+                    <div class="col-md-6 p-0">
+                        <div class="ratio ratio-16x9 h-100">
+                            <iframe src="https://www.google.com/maps?q=Avenida+Cumbres+Madeiras+1310,+Real+de+Cumbres,+Monterrey,+Nuevo+León,+México&output=embed" title="Ubicación Kase Chemical" allowfullscreen loading="lazy" style="border:0; width:100%; height:100%;"></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    <!-- Fin Sección de Contacto -->
 
     <footer class="bg-dark text-white py-4 mt-5">
         <div class="container text-center">

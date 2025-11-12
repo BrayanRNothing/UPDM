@@ -3,7 +3,7 @@
     width: 100%;
     height: 100%;
     min-height: 300px;
-    background: ;
+    background: transparent;
     border-radius: 30px;
 }
 .direccion-mapa {
@@ -232,3 +232,78 @@ body {
 .navbar .nav-link {
     color:  #4ab7e2 !important; /* Cambia este color por el que prefieras */
 }
+
+/* Estilos para integrar el formulario con la identidad de la empresa */
+.company-form {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1rem;
+    border-left: 6px solid #4ab7e2; /* acento de color de la marca */
+}
+
+.company-form .form-header {
+    padding-bottom: 0.25rem;
+}
+
+.company-form .form-logo {
+    width: 88px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+/* Separador sutil */
+.company-form hr {
+    margin: 0.5rem 0 0.75rem 0;
+    border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Ajustes responsive: en pantallas pequeñas el wrapper tendrá menos padding y sin offset */
+@media (max-width: 992px) {
+    .company-form {
+        padding: 0.8rem;
+        border-left-width: 4px;
+    }
+}
+
+/* Si quieres cambiar el color de acento de la empresa, edita la variable aquí */
+:root {
+    --updm-accent: #4ab7e2;
+}
+
+/* Videos apilados a la derecha del formulario */
+.videos-stack {
+    display: flex;
+    flex-direction: column;
+}
+.videos-stack .ratio {
+    width: 100%;
+}
+
+/* Asegurar que el iframe ocupe todo el contenedor ratio */
+.videos-stack iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* Imagen final: más pequeña (centrada), sin sombras ni bordes */
+.final-image {
+    text-align: center;
+}
+.final-image img {
+    width: 60%;
+    max-width: 700px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 0;
+    box-shadow: none !important;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .final-image img {
+        width: 80%;
+        max-width: 420px;
+    }
+}
+
